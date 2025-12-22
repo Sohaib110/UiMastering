@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { vs, s } from 'react-native-size-matters'
+import TopTabs from '../components/TopTabs'
 
 const HomeScreen = () => {
   return (
@@ -17,6 +18,7 @@ const HomeScreen = () => {
         fontSize:vs(14),
         marginBottom:vs(16)
         }}>Lorem Ipsum is simply dummy text</Text>
+        <TopTabs />
     </View>
   )
 }
