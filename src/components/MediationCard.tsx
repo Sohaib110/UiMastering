@@ -1,6 +1,7 @@
 import { ImageBackground, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { vs, s } from 'react-native-size-matters'
+import { VideoIcon } from '../assets/Icons'
 
 const MediationCard = () => {
   return (
@@ -9,8 +10,15 @@ const MediationCard = () => {
     imageStyle={styles.image}
     >
       <View style={styles.overlay} />
+      <View style={styles.liveBadge}>
+        <Text style={styles.liveText}>Live</Text>
+      </View>
       <View style={styles.cardContent}>
         <Text style={styles.title}>Meditations</Text>
+        <View style={{flexDirection:"row", alignItems:'center'}}>
+         <VideoIcon />
+         <Text style={styles.dateText}>31st Jan - 9:00 am</Text>
+        </View>
       </View>
       
     </ImageBackground>
@@ -46,6 +54,28 @@ const styles = StyleSheet.create({
   overlay:{
     ...StyleSheet.absoluteFillObject,
     backgroundColor:'rgba(0,0,0,0.45)',
+  },
+  dateText:{
+    color:'#FFFFFF',
+    fontSize:vs(12),
+    marginStart:s(7),
+  },
+  liveBadge:{
+    backgroundColor:'#E41111',
+    height:vs(22),
+    width:s(39),
+    borderRadius:s(90),
+    position:'absolute',
+    top:vs(7),
+    right:s(10),
+    justifyContent:'center',
+    alignItems:'center',
+    
+  },
+  liveText:{
+    color:'#FFFFFF',
+    fontSize:vs(11),
+    fontWeight:'semibold',
   }
 
 })
