@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { vs, s } from 'react-native-size-matters'
 import TopTabs from '../components/TopTabs'
+import MediationCard from '../components/MediationCard'
 
 const HomeScreen = () => {
   return (
@@ -19,6 +20,7 @@ const HomeScreen = () => {
         marginBottom:vs(16)
         }}>Lorem Ipsum is simply dummy text</Text>
         <TopTabs />
+        <MediationCard />
     </View>
   )
 }
