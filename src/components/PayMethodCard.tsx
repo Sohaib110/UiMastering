@@ -1,16 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { CashIcon } from '../assets/Icons'
 import { s, vs} from 'react-native-size-matters'
+import Entypo from '@expo/vector-icons/Entypo';
 
-const PayMethodCard = () => {
+interface PayMethodCardProps{
+    isSelected?:boolean;
+    title:string;
+    icon?:React.ReactNode;
+    onPress?:() => void;
+}
+
+const PayMethodCard : React.FC<PayMethodCardProps> = ({isSelected=false, title, icon, onPress}) => {
   return (
-    <View style={{width:s(85)}}>
-        <View style={styles.card}>
-        <CashIcon/>
+    <TouchableOpacity onPress={onPress} style={{width:s(85)}}>
+        {isSelected && <View style={styles.checkMarkContainer}>
+        <Entypo name="check" size={12} color="#fff" />
+          </View>}
+        <View style={[styles.card, isSelected && styles.selectedCardStyle]}>
+        {icon}
         </View>
-      <Text style={styles.label}>Cash</Text>
-    </View>
+      <Text style={styles.label}>{title}</Text>
+    </TouchableOpacity>
   )
 }
 
@@ -30,6 +40,24 @@ const styles = StyleSheet.create({
       color:'#464E57',
       textAlign:'center',
         marginTop:vs(4),
-
+    },
+    selectedCardStyle:{
+        backgroundColor:'#fff',
+        borderWidth:s(2),
+        borderColor:'#FF7622',
+    },
+    checkMarkContainer:{
+        height:s(24),
+        width:s(24),
+        borderRadius:s(12),
+        borderWidth:s(2),
+        borderColor:'#FFF',
+        backgroundColor:'#FF7622',
+        position:'absolute',
+        zIndex:1,
+        top:s(-8),
+        right:s(-8),
+        justifyContent:'center',
+        alignItems:'center',
     }
 })
