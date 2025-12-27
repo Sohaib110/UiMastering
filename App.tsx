@@ -1,9 +1,10 @@
+import PaymentScreen from "./src/screens/PaymentScreen";
 
-import HomeScreen from './src/screens/HomeScreen';
+
 
 export default function App() {
   return (
-   <HomeScreen />
+   <PaymentScreen/>
   );
 }
 
