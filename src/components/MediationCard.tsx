@@ -1,11 +1,22 @@
-import { ImageBackground, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { ImageBackground, StyleSheet, Text, View, Dimensions } from 'react-native'
+import { FC } from 'react'
 import { vs, s } from 'react-native-size-matters'
 import { VideoIcon } from '../assets/Icons'
 
-const MediationCard = () => {
+
+
+const PhoneWidth = Dimensions.get('window').width;
+const CardWidth = (PhoneWidth - s(16)*3) / 2; 
+
+interface MediationCardProps{
+  imageURL:string;
+  title:string;
+  date:string;
+}
+
+const MediationCard:FC<MediationCardProps> = ({imageURL, title, date}) => {
   return (
-    <ImageBackground source={{uri:'https://cdn.ecuad.ca/assets/events-images/vecteezy_cute-little-boy-meditating-in-the-park-cartoon-illustration.jpg'}}
+    <ImageBackground source={{uri:imageURL}}
     style={styles.imageContainer}
     imageStyle={styles.image}
     >
@@ -14,10 +25,10 @@ const MediationCard = () => {
         <Text style={styles.liveText}>Live</Text>
       </View>
       <View style={styles.cardContent}>
-        <Text style={styles.title}>Meditations</Text>
+        <Text style={styles.title}>{title}</Text>
         <View style={{flexDirection:"row", alignItems:'center'}}>
          <VideoIcon />
-         <Text style={styles.dateText}>31st Jan - 9:00 am</Text>
+         <Text style={styles.dateText}>{date}</Text>
         </View>
       </View>
       
@@ -30,8 +41,8 @@ export default MediationCard
 const styles = StyleSheet.create({
   imageContainer:{
     borderRadius:s(12),
-    height:vs(161),
-    width:s(166),
+    height:vs(140),
+    width:CardWidth,
     overflow:'hidden',
   },
   image:{
